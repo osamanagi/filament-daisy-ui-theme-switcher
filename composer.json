@@ -1,36 +1,33 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "osamanagi/filament-daisy-ui-theme-switcher",
+    "description": "Integrating Daisy UI theme switcher to Filament apps",
     "keywords": [
-        ":vendor_name",
+        "osamanagi",
         "laravel",
         "filamentphp",
         "filament",
         "filament-plugin",
-        ":package_slug"
+        "filament-daisy-ui-theme-switcher"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/osamanagi/filament-daisy-ui-theme-switcher",
     "support": {
-        "issues": "https://github.com/:vendor_slug/:package_slug/issues",
-        "source": "https://github.com/:vendor_slug/:package_slug"
+        "issues": "https://github.com/osamanagi/filament-daisy-ui-theme-switcher/issues",
+        "source": "https://github.com/osamanagi/filament-daisy-ui-theme-switcher"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "osamanagi",
+            "email": "osamanagiworks@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.2",
         "filament/filament": "^5.0",
-        "filament/forms": "^5.0",
-        "filament/tables": "^5.0",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
-        "larastan/larastan": "^3.0",
         "laravel/pint": "^1.0",
         "nunomaduro/collision": "^8.0",
         "orchestra/testbench": "^9.0|^10.0",
@@ -38,23 +35,21 @@
         "pestphp/pest-plugin-arch": "^3.0|^4.0",
         "pestphp/pest-plugin-laravel": "^3.0|^4.0",
         "pestphp/pest-plugin-livewire": "^3.0|^4.0",
-        "rector/rector": "^2.0",
-        "spatie/laravel-ray": "^1.26"
+        "rector/rector": "^2.0"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Osamanagi\\FilamentDaisyUiThemeSwitcher\\": "src/",
+            "Osamanagi\\FilamentDaisyUiThemeSwitcher\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "Osamanagi\\FilamentDaisyUiThemeSwitcher\\Tests\\": "tests/"
         }
     },
     "scripts": {
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
-        "analyse": "phpstan analyse",
         "lint": "pint",
         "refactor": "rector",
         "test": "pest",
@@ -64,10 +59,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Osamanagi\\FilamentDaisyUiThemeSwitcher\\FilamentDaisyUiThemeSwitcherServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentDaisyUiThemeSwitcher": "Osamanagi\\FilamentDaisyUiThemeSwitcher\\Facades\\FilamentDaisyUiThemeSwitcher"
             }
         }
     },
