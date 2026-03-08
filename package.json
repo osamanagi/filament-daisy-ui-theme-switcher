@@ -1,6 +1,14 @@
 {
     "private": true,
     "type": "module",
-    "scripts": [],
-    "devDependencies": []
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.0",
+        "daisyui": "^5.0",
+        "tailwindcss": "^4.0",
+        "vite": "^6.0"
+    }
 }

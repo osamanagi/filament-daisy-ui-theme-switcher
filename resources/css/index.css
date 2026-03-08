@@ -1,1 +1,103 @@
-@import '../../vendor/filament/filament/resources/css/theme.css';
+/* ============================================================
+ * filament-daisy-ui-theme-switcher — compiled stylesheet
+ * ============================================================
+ * Includes all 35 DaisyUI themes and the theme picker component
+ * styles. DaisyUI base (HTML element resets) is disabled so
+ * Filament's own styling is not overridden.
+ * ============================================================ */
+
+/* Tailwind infrastructure only — do not scan the whole project */
+@import 'tailwindcss' source(none);
+
+/* Scan this plugin's own Blade views for utility classes */
+@source '../views/**/*.blade.php';
+
+/* DaisyUI plugin — all 35 themes, no HTML resets */
+@plugin 'daisyui' {
+    themes: all;
+    base: false;
+    logs: false;
+}
+
+/* ── Theme picker component ────────────────────────────────── */
+
+.daisy-theme-switcher {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.daisy-theme-picker-panel {
+    position: absolute;
+    inset-inline-end: 0;
+    top: calc(100% + 0.5rem);
+    z-index: 50;
+    width: 22rem;
+    max-height: 26rem;
+    overflow-y: auto;
+    border-radius: var(--radius-xl, 0.75rem);
+    background-color: white;
+    padding: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+    outline: 1px solid rgb(0 0 0 / 0.05);
+    scrollbar-width: thin;
+}
+
+:where(.dark, .dark *) .daisy-theme-picker-panel {
+    background-color: var(--gray-900, #111827);
+    outline-color: rgb(255 255 255 / 0.1);
+}
+
+.daisy-theme-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.daisy-theme-item {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    transition: border-color 75ms ease;
+    background-color: var(--color-base-100);
+}
+
+.daisy-theme-item:hover {
+    border-color: rgb(0 0 0 / 0.2);
+}
+
+:where(.dark, .dark *) .daisy-theme-item:hover {
+    border-color: rgb(255 255 255 / 0.2);
+}
+
+.daisy-theme-item.daisy-active {
+    border-color: var(--primary-500, oklch(62% 0.214 259.815));
+}
+
+.daisy-theme-swatches {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 4px;
+}
+
+.daisy-theme-swatch {
+    height: 0.875rem;
+    flex: 1;
+    border-radius: 0.25rem;
+}
+
+.daisy-theme-label {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-base-content);
+}
