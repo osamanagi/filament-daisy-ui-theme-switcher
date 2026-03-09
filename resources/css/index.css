@@ -101,3 +101,214 @@
     text-overflow: ellipsis;
     color: var(--color-base-content);
 }
+
+/* ── Filament ↔ DaisyUI bridge ─────────────────────────────── */
+/* Maps DaisyUI CSS variables onto Filament's gray scale and    */
+/* semantic color scales, and fixes Filament surface colors.    */
+
+/* Light themes — gray scale maps base-100 (light) → base-content (dark) */
+:root[data-theme]:not(
+        [data-theme='dark'],
+        [data-theme='synthwave'],
+        [data-theme='halloween'],
+        [data-theme='forest'],
+        [data-theme='aqua'],
+        [data-theme='black'],
+        [data-theme='luxury'],
+        [data-theme='dracula'],
+        [data-theme='business'],
+        [data-theme='night'],
+        [data-theme='coffee'],
+        [data-theme='dim'],
+        [data-theme='sunset'],
+        [data-theme='abyss']
+    ) {
+    --gray-50: var(--color-base-100);
+    --gray-100: var(--color-base-200);
+    --gray-200: var(--color-base-300);
+    --gray-300: color-mix(
+        in oklch,
+        var(--color-base-100) 80%,
+        var(--color-base-content)
+    );
+    --gray-400: color-mix(
+        in oklch,
+        var(--color-base-100) 65%,
+        var(--color-base-content)
+    );
+    --gray-500: color-mix(
+        in oklch,
+        var(--color-base-100) 50%,
+        var(--color-base-content)
+    );
+    --gray-600: color-mix(
+        in oklch,
+        var(--color-base-100) 37%,
+        var(--color-base-content)
+    );
+    --gray-700: color-mix(
+        in oklch,
+        var(--color-base-100) 25%,
+        var(--color-base-content)
+    );
+    --gray-800: color-mix(
+        in oklch,
+        var(--color-base-100) 15%,
+        var(--color-base-content)
+    );
+    --gray-900: color-mix(
+        in oklch,
+        var(--color-base-100) 7%,
+        var(--color-base-content)
+    );
+    --gray-950: var(--color-base-content);
+}
+
+/* Dark themes — gray scale maps base-100 (dark) → base-content (light) */
+:root:is(
+        [data-theme='dark'],
+        [data-theme='synthwave'],
+        [data-theme='halloween'],
+        [data-theme='forest'],
+        [data-theme='aqua'],
+        [data-theme='black'],
+        [data-theme='luxury'],
+        [data-theme='dracula'],
+        [data-theme='business'],
+        [data-theme='night'],
+        [data-theme='coffee'],
+        [data-theme='dim'],
+        [data-theme='sunset'],
+        [data-theme='abyss']
+    ) {
+    --gray-50: white;
+    --gray-100: color-mix(in oklch, var(--color-base-content) 60%, white);
+    --gray-200: var(--color-base-content);
+    --gray-300: color-mix(
+        in oklch,
+        var(--color-base-content) 85%,
+        var(--color-base-100)
+    );
+    --gray-400: color-mix(
+        in oklch,
+        var(--color-base-content) 68%,
+        var(--color-base-100)
+    );
+    --gray-500: color-mix(
+        in oklch,
+        var(--color-base-content) 52%,
+        var(--color-base-100)
+    );
+    --gray-600: color-mix(
+        in oklch,
+        var(--color-base-content) 37%,
+        var(--color-base-100)
+    );
+    --gray-700: color-mix(
+        in oklch,
+        var(--color-base-content) 22%,
+        var(--color-base-100)
+    );
+    --gray-800: color-mix(
+        in oklch,
+        var(--color-base-content) 10%,
+        var(--color-base-100)
+    );
+    --gray-900: var(--color-base-100);
+    --gray-950: var(--color-base-200);
+}
+
+/* Semantic color scales — overrides any ->colors() set in AdminPanelProvider */
+:root[data-theme] {
+    --primary-50: color-mix(in oklch, var(--color-primary) 8%, white);
+    --primary-100: color-mix(in oklch, var(--color-primary) 18%, white);
+    --primary-200: color-mix(in oklch, var(--color-primary) 32%, white);
+    --primary-300: color-mix(in oklch, var(--color-primary) 52%, white);
+    --primary-400: color-mix(in oklch, var(--color-primary) 72%, white);
+    --primary-500: var(--color-primary);
+    --primary-600: color-mix(in oklch, var(--color-primary) 85%, black);
+    --primary-700: color-mix(in oklch, var(--color-primary) 68%, black);
+    --primary-800: color-mix(in oklch, var(--color-primary) 50%, black);
+    --primary-900: color-mix(in oklch, var(--color-primary) 32%, black);
+    --primary-950: color-mix(in oklch, var(--color-primary) 15%, black);
+
+    --danger-50: color-mix(in oklch, var(--color-error) 8%, white);
+    --danger-100: color-mix(in oklch, var(--color-error) 18%, white);
+    --danger-200: color-mix(in oklch, var(--color-error) 32%, white);
+    --danger-300: color-mix(in oklch, var(--color-error) 52%, white);
+    --danger-400: color-mix(in oklch, var(--color-error) 72%, white);
+    --danger-500: var(--color-error);
+    --danger-600: color-mix(in oklch, var(--color-error) 85%, black);
+    --danger-700: color-mix(in oklch, var(--color-error) 68%, black);
+    --danger-800: color-mix(in oklch, var(--color-error) 50%, black);
+    --danger-900: color-mix(in oklch, var(--color-error) 32%, black);
+    --danger-950: color-mix(in oklch, var(--color-error) 15%, black);
+
+    --warning-50: color-mix(in oklch, var(--color-warning) 8%, white);
+    --warning-100: color-mix(in oklch, var(--color-warning) 18%, white);
+    --warning-200: color-mix(in oklch, var(--color-warning) 32%, white);
+    --warning-300: color-mix(in oklch, var(--color-warning) 52%, white);
+    --warning-400: color-mix(in oklch, var(--color-warning) 72%, white);
+    --warning-500: var(--color-warning);
+    --warning-600: color-mix(in oklch, var(--color-warning) 85%, black);
+    --warning-700: color-mix(in oklch, var(--color-warning) 68%, black);
+    --warning-800: color-mix(in oklch, var(--color-warning) 50%, black);
+    --warning-900: color-mix(in oklch, var(--color-warning) 32%, black);
+    --warning-950: color-mix(in oklch, var(--color-warning) 15%, black);
+
+    --success-50: color-mix(in oklch, var(--color-success) 8%, white);
+    --success-100: color-mix(in oklch, var(--color-success) 18%, white);
+    --success-200: color-mix(in oklch, var(--color-success) 32%, white);
+    --success-300: color-mix(in oklch, var(--color-success) 52%, white);
+    --success-400: color-mix(in oklch, var(--color-success) 72%, white);
+    --success-500: var(--color-success);
+    --success-600: color-mix(in oklch, var(--color-success) 85%, black);
+    --success-700: color-mix(in oklch, var(--color-success) 68%, black);
+    --success-800: color-mix(in oklch, var(--color-success) 50%, black);
+    --success-900: color-mix(in oklch, var(--color-success) 32%, black);
+    --success-950: color-mix(in oklch, var(--color-success) 15%, black);
+
+    --info-50: color-mix(in oklch, var(--color-info) 8%, white);
+    --info-100: color-mix(in oklch, var(--color-info) 18%, white);
+    --info-200: color-mix(in oklch, var(--color-info) 32%, white);
+    --info-300: color-mix(in oklch, var(--color-info) 52%, white);
+    --info-400: color-mix(in oklch, var(--color-info) 72%, white);
+    --info-500: var(--color-info);
+    --info-600: color-mix(in oklch, var(--color-info) 85%, black);
+    --info-700: color-mix(in oklch, var(--color-info) 68%, black);
+    --info-800: color-mix(in oklch, var(--color-info) 50%, black);
+    --info-900: color-mix(in oklch, var(--color-info) 32%, black);
+    --info-950: color-mix(in oklch, var(--color-info) 15%, black);
+}
+
+/* Filament surface overrides — replace bg-white with DaisyUI base colors */
+[data-theme] .fi-topbar {
+    background-color: var(--color-base-200);
+}
+
+[data-theme] .fi-sidebar,
+[data-theme] .fi-sidebar-ctn {
+    background-color: var(--color-base-200);
+}
+
+[data-theme] .fi-sidebar-header {
+    background-color: var(--color-base-200);
+}
+
+[data-theme] .fi-section:not(.fi-section-not-contained):not(.fi-aside),
+[data-theme]
+    .fi-section:not(.fi-section-not-contained).fi-aside
+    > .fi-section-content-ctn,
+[data-theme] .fi-wi-stats-overview-stat,
+[data-theme] .fi-ta-ctn,
+[data-theme] .fi-modal-window-inner,
+[data-theme] .fi-modal-inner-header,
+[data-theme] .fi-modal-inner-footer,
+[data-theme] .fi-dropdown-panel,
+[data-theme] .fi-global-search-results-ctn,
+[data-theme] .fi-tabs-pill-ctn,
+[data-theme] .fi-callout,
+[data-theme] .fi-empty-state:not(.fi-empty-state-not-contained),
+[data-theme] .fi-simple-main {
+    background-color: var(--color-base-100);
+}
