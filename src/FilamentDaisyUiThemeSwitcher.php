@@ -4,7 +4,7 @@ namespace Osamanagi\FilamentDaisyUiThemeSwitcher;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Filament\Support\Assets\Theme;
+use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
@@ -41,7 +41,7 @@ class FilamentDaisyUiThemeSwitcher implements Plugin
     {
         FilamentAsset::register(
             [
-                Theme::make(
+                Css::make(
                     'filament-daisy-ui-theme-switcher',
                     __DIR__ . '/../resources/dist/filament-daisy-ui-theme-switcher.css',
                 ),
